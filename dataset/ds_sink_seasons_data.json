@@ -1,0 +1,20 @@
+{
+	"name": "ds_sink_seasons_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_formula_one_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "seasons.json",
+				"folderPath": "bronze/seasons",
+				"fileSystem": "bronze"
+			}
+		},
+		"schema": {}
+	}
+}
