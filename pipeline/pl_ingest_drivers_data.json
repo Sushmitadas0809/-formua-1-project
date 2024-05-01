@@ -1,0 +1,61 @@
+{
+	"name": "pl_ingest_drivers_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup_seasons",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_sink_seasons_data",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "for_each_seasons",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup_seasons",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup_seasons').output.firstRow.MRData.SeasonTable.Seasons",
+						"type": "Expression"
+					},
+					"batchCount": 20
+				}
+			}
+		],
+		"folder": {
+			"name": "formula_one_project"
+		},
+		"annotations": []
+	}
+}

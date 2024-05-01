@@ -5,6 +5,9 @@
 			"referenceName": "ls_formula_one_storage",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "formula_one_datasets/raw"
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
