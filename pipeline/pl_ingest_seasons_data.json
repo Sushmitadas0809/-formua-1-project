@@ -5,7 +5,14 @@
 			{
 				"name": "act_copy_data",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "validation of seasons data",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -48,8 +55,27 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "validation of seasons data",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_sink_seasons_data",
+						"type": "DatasetReference"
+					},
+					"timeout": "0.00:00:30",
+					"sleep": 10
+				}
 			}
 		],
+		"variables": {
+			"web_op": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "formula_one_project"
 		},
