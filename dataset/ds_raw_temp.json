@@ -1,0 +1,29 @@
+{
+	"name": "ds_raw_temp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_formula_one_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "temp.txt",
+				"folderPath": "bronze/temp",
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "abcd",
+				"type": "String"
+			}
+		]
+	}
+}

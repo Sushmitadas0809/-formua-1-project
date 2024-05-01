@@ -1,0 +1,32 @@
+{
+	"name": "ds_raw_races",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_formula_one_storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"season": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().season,'_races.json')",
+					"type": "Expression"
+				},
+				"folderPath": "bronze/races",
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
