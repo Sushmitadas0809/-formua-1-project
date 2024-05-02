@@ -5,6 +5,9 @@
 			"referenceName": "ls_formula_one_storage",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "formula_one_datasets/raw"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
@@ -16,7 +19,7 @@
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
+			"firstRowAsHeader": false,
 			"quoteChar": "\""
 		},
 		"schema": [
